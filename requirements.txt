@@ -12,3 +12,5 @@ uvicorn>=0.22.0
 groq>=1.4.0
 flashrank
 langchain-community
+flask
+requests
