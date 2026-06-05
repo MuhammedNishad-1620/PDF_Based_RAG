@@ -16,8 +16,8 @@ MAX_TOKENS = 800
 # Embedding model(hugging_face_all-MiniLM-L6-v2)
 EMBEDDING_PROVIDER = "huggingface"
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
-CHUNKING_SIZE = 800
-CHUNKING_OVERLAP = 100
+CHUNKING_SIZE = 512
+CHUNKING_OVERLAP = 64
 
 
 # VectorDB
@@ -25,3 +25,8 @@ CHROMA_DB_PATH = "chroma_db/"
 
 # Top_k and relevance threshold
 TOP_K = 10
+
+# Reranker settings
+RERANKER_MODEL_NAME = "ms-marco-MiniLM-L-12-v2"
+RERANK_INITIAL_K = 15
+RERANK_FINAL_K = 3
