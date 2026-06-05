@@ -16,8 +16,9 @@ MAX_TOKENS = 800
 # Embedding model(hugging_face_all-MiniLM-L6-v2)
 EMBEDDING_PROVIDER = "huggingface"
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
-CHUNKING_SIZE = 512
-CHUNKING_OVERLAP = 64
+CHUNKING_SIZE = 800
+CHUNKING_OVERLAP = 100
+
 
 # VectorDB
 CHROMA_DB_PATH = "chroma_db/"
