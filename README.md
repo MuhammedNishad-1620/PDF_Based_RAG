@@ -25,6 +25,53 @@ It provides both a developer-friendly **FastAPI REST API** and a simple, user-fr
 
 ---
 
+## System Architecture & Methodology
+
+### 1. Multi-Track Document Segmentation
+Before files are loaded into the vector database, documents undergo structural segmentation to separate content into three high-fidelity processing tracks:
+* **Text Extraction**: PyMuPDF parses paragraphs and layout text blocks while preserving relative page references.
+* **Table Structures**: `pdfplumber` identifies boundary lines and tabular grids to export tables as markdown strings, preserving columns and rows.
+* **Image OCR**: Visual images are extracted, run through `EasyOCR` to capture printed text inside figures, and merged with surrounding captions.
+
+Once extracted, these tracks are unified into standard Document blocks prior to building the database index.
+
+### 2. Chunking & Overlap Strategy
+* **Chunk Size (`512` characters/words)**: Balances semantic density with target context window constraints, preventing individual passages from diluting distinct facts.
+* **Chunk Overlap (`64` characters/words)**: Provides a sliding window buffer that ensures critical information spanning chunk boundaries (such as equations, algorithms, or definitions) remains intact.
+
+### 3. Reranking & Hallucination Control
+To mitigate LLM hallucination and clean retrieved noise, we employ **Cross-Encoder Reranking** via **FlashRank** (`ms-marco-MiniLM-L-12-v2`):
+1. **Raw Vector Retrieval**: The database queries a broad set of candidates (`RERANK_INITIAL_K = 15`).
+2. **Relevance Scoring**: FlashRank computes cross-attention relevance scores between the prompt query and candidate passages.
+3. **Prompt Compression**: The list is pruned down to the top `3` highest-scoring matches (`RERANK_FINAL_K = 3`).
+4. **Impact**: Compressing context down to the most relevant matches prevents the LLM from getting distracted by noise, reducing out-of-scope hallucinations.
+
+### 4. Model Selection & Open-Source Compatibility
+* **Embeddings & Reranking**: `all-MiniLM-L6-v2` and `ms-marco-MiniLM-L-12-v2` are highly efficient open-source models designed to run locally on CPU, ensuring high environmental compatibility and low deployment footprints.
+* **Llama 3 (via Groq)**: Leverages highly optimized open-source foundation models running on dedicated hardware to ensure low response latency and compatibility with privacy-oriented deployments.
+
+---
+
+## Evaluation Results
+
+We ran automated verification tests to evaluate retrieval quality, accuracy, and page coverage. The results from [eval_results.json](file:///f:/Projects/PDF_Based_RAG/eval_results.json) are summarized below:
+
+* **Total Questions Evaluated**: 12
+* **Passed Verdicts**: 9 (75.0% pass rate)
+* **Average Keyword Match Score**: 76.1%
+* **Average Page Coverage Score**: 79.2%
+
+*Note: Retrieval issues were observed on multi-hop questions requiring joint information across disconnected pages, while factual lookup queries achieved 100% accuracy.*
+
+---
+
+## System Limitations
+
+* **Strict Semantic Dependency & Context Fragmentation**: Subdividing pages into rigid 512-token chunks can fracture tables, charts, or continuous definitions that cross boundaries. If the query requires understanding the complete document flow, fragmented context can result in incomplete answers.
+* **Inherent Vulnerability to "Lost in the Middle" (Prompt Saturation)**: Large language models tend to ignore information placed in the middle of long prompts. If the reranking step places critical information in the middle of a dense context payload, the model may suffer from prompt saturation and fail to extract the correct answer.
+
+---
+
 ## Setup Instructions
 
 ### 1. Configure the Environment

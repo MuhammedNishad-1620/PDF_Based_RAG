@@ -1,0 +1,511 @@
+{
+  "run_at": "2026-06-05T20:44:25.540270",
+  "summary": {
+    "total": 12,
+    "passed": 9,
+    "avg_keyword_score": 76.1,
+    "avg_page_coverage": 79.2
+  },
+  "results": [
+    {
+      "id": 1,
+      "category": "Retrieval Quality",
+      "type": "Factual Lookup",
+      "question": "What are the three stages of the Naive RAG pipeline?",
+      "answer": "According to the context provided, specifically in [TEXT CHUNK 2] (Source: Document.pdf, Page: 4), the three stages of the Naive RAG pipeline are: \n\n1. Indexing \n2. Retrieval \n3. Generation \n\nThese stages are described as the main components of the Naive RAG, following a chain-like structure.",
+      "verdict": "FAIL",
+      "keyword_score": 1.0,
+      "page_coverage_score": 0.0,
+      "keywords_found": [
+        "indexing",
+        "retrieval",
+        "generation"
+      ],
+      "keywords_missing": [],
+      "pages_hit": [],
+      "pages_missed": [
+        3
+      ],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 2
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 4
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 1
+        }
+      ],
+      "latency_sec": 1.71,
+      "notes": "Answer is explicitly on page 3."
+    },
+    {
+      "id": 2,
+      "category": "Retrieval Quality",
+      "type": "Factual Lookup",
+      "question": "What is the purpose of the post-retrieval reranking step in Advanced RAG?",
+      "answer": "The purpose of the post-retrieval reranking step in Advanced RAG is not mentioned in the provided context. The context discusses pre-retrieval and post-retrieval strategies in Advanced RAG, but it does not specifically elaborate on the purpose of the post-retrieval reranking step. Therefore, cannot answer the question based on the given information.",
+      "verdict": "FAIL",
+      "keyword_score": 0.2,
+      "page_coverage_score": 0.5,
+      "keywords_found": [
+        "rerank"
+      ],
+      "keywords_missing": [
+        "relevant",
+        "pertinent",
+        "filter",
+        "enhancer"
+      ],
+      "pages_hit": [
+        4
+      ],
+      "pages_missed": [
+        10
+      ],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 3
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 4
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 11
+        }
+      ],
+      "latency_sec": 1.58,
+      "notes": "Should mention relocating most relevant content to edges of prompt."
+    },
+    {
+      "id": 3,
+      "category": "Retrieval Quality",
+      "type": "Factual Lookup",
+      "question": "Name two frameworks that implement the reranking concept mentioned in the paper.",
+      "answer": "According to the provided context, specifically in [TEXT CHUNK 2], two frameworks that implement the reranking concept are: \n\n1. LlamaIndex2 \n2. LangChain3 \n\nNote that another framework, HayStack, is also mentioned in the same context as implementing the post-retrieval process, which includes reranking. However, the question asks for two frameworks, and the above two are explicitly mentioned in the context as examples.",
+      "verdict": "PASS",
+      "keyword_score": 1.0,
+      "page_coverage_score": 1.0,
+      "keywords_found": [
+        "llamaindex",
+        "langchain",
+        "haystack"
+      ],
+      "keywords_missing": [],
+      "pages_hit": [
+        4
+      ],
+      "pages_missed": [],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 10
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 4
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 10
+        }
+      ],
+      "latency_sec": 1.6,
+      "notes": "LlamaIndex, LangChain, HayStack all valid."
+    },
+    {
+      "id": 4,
+      "category": "Retrieval Quality",
+      "type": "Factual Lookup",
+      "question": "What does the acronym HyDE stand for, and what problem does it solve?",
+      "answer": "Based on the provided context, the acronym HyDE is mentioned in TEXT CHUNK 1 and TEXT CHUNK 2. However, the full form of the acronym HyDE is not explicitly mentioned. \n\nRegarding the problem it solves, HyDE is used to generate hypothetical questions or documents (assumed answers to the original query) to reduce the semantic gap between the question and the answer, thus enhancing information retrieval. Specifically, it focuses on embedding similarity from answer to answer. \n\nThere is no specific technical attribute (e.g., atomic, factual, self-contained, sequential, iterative, or adaptive) explicitly mentioned for HyDE in the provided context.",
+      "verdict": "PASS",
+      "keyword_score": 0.67,
+      "page_coverage_score": 0.5,
+      "keywords_found": [
+        "hyde",
+        "embedding similarity"
+      ],
+      "keywords_missing": [
+        "hypothetical document embeddings"
+      ],
+      "pages_hit": [
+        9
+      ],
+      "pages_missed": [
+        5
+      ],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 8
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 9
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 12
+        }
+      ],
+      "latency_sec": 1.91,
+      "notes": "Must expand acronym AND describe the retrieval problem it solves."
+    },
+    {
+      "id": 5,
+      "category": "Retrieval Quality",
+      "type": "Factual Lookup",
+      "question": "What is a proposition as defined by DenseX, and why is it used as a retrieval unit?",
+      "answer": "According to the provided context, specifically [TEXT CHUNK 1], a proposition as defined by DenseX is an \"atomic expression in the text, each encapsulating a unique\" concept. However, the context does not fully elaborate on what makes a proposition \"atomic\" or what specific attributes define its uniqueness, other than being an expression in the text.\n\nIt is mentioned that DenseX proposed the concept of using propositions as retrieval units, but the exact rationale behind choosing propositions specifically is not detailed in the given context. The context only mentions that adjusting the retrieval granularity, which includes using propositions, can be a simple and effective strategy to improve the retrieval and downstream task performance of dense retrievers. No specific technical attributes, such as being factual, self-contained, sequential, iterative, or adaptive, are explicitly mentioned regarding propositions in the context.",
+      "verdict": "PASS",
+      "keyword_score": 0.6,
+      "page_coverage_score": 1.0,
+      "keywords_found": [
+        "atomic",
+        "factual",
+        "self-contained"
+      ],
+      "keywords_missing": [
+        "precision",
+        "relevance"
+      ],
+      "pages_hit": [
+        8
+      ],
+      "pages_missed": [],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 8
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 8
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 17
+        }
+      ],
+      "latency_sec": 1.92,
+      "notes": "Should mention atomic expressions encapsulating unique factual segments."
+    },
+    {
+      "id": 6,
+      "category": "Retrieval Quality",
+      "type": "Multi-hop",
+      "question": "How does Self-RAG differ from FLARE in deciding when to trigger retrieval?",
+      "answer": "Based on the provided context, Self-RAG and FLARE are both mentioned as approaches that transcend the fixed RAG retrieval process. However, the specific differences in how they decide when to trigger retrieval are not fully detailed in the given context. \n\nFrom TEXT CHUNK 2, it is mentioned that Self-RAG introduces \"reflection tokens\" that allow the model to introspect its outputs, and the model autonomously decides when to activate retrieval, or a predefined threshold may trigger the process. \n\nIn contrast, the context does not explicitly mention how FLARE decides when to trigger retrieval. It only mentions that FLARE, along with Self-RAG, evaluates the necessity of retrieval based on different scenarios, as stated in TEXT CHUNK 1.\n\nTherefore, while it is clear that both Self-RAG and FLARE offer flexible architectures for retrieval, the specific technical attributes or decision mechanisms for triggering retrieval in FLARE are not mentioned, making a direct comparison to Self-RAG's autonomous decision or threshold-based approach incomplete.",
+      "verdict": "FAIL",
+      "keyword_score": 0.4,
+      "page_coverage_score": 1.0,
+      "keywords_found": [
+        "reflection token",
+        "threshold"
+      ],
+      "keywords_missing": [
+        "probability",
+        "critique",
+        "retrieve"
+      ],
+      "pages_hit": [
+        11,
+        12
+      ],
+      "pages_missed": [],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 5
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 12
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 11
+        }
+      ],
+      "latency_sec": 1.92,
+      "notes": "FLARE uses token probability; Self-RAG uses reflection tokens."
+    },
+    {
+      "id": 7,
+      "category": "Retrieval Quality",
+      "type": "Multi-hop",
+      "question": "What are the four required abilities evaluated in a RAG system, and which evaluation benchmarks test them?",
+      "answer": "The four required abilities evaluated in a RAG system are: \n1. Noise robustness, \n2. Negative rejection, \n3. Information integration, and \n4. Counterfactual robustness. \n\nThese abilities are critical for the model's performance under various challenges and complex scenarios. \n\nThe evaluation benchmarks that test these abilities include prominent benchmarks such as RGB and RECALL, although the specific metrics or thresholds used by these benchmarks are not mentioned. Additionally, state-of-the-art automated tools like RAGAS are available, but it is not explicitly stated which specific abilities they evaluate.",
+      "verdict": "PASS",
+      "keyword_score": 0.86,
+      "page_coverage_score": 1.0,
+      "keywords_found": [
+        "noise robustness",
+        "negative rejection",
+        "information integration",
+        "counterfactual robustness",
+        "rgb",
+        "recall"
+      ],
+      "keywords_missing": [
+        "crud"
+      ],
+      "pages_hit": [
+        12,
+        14
+      ],
+      "pages_missed": [],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 12
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 14
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 2
+        }
+      ],
+      "latency_sec": 1.32,
+      "notes": "Must list all 4 abilities correctly. RGB/RECALL/CRUD are the benchmarks."
+    },
+    {
+      "id": 8,
+      "category": "Retrieval Quality",
+      "type": "Multi-hop",
+      "question": "How does Modular RAG differ from Advanced RAG in terms of pipeline structure?",
+      "answer": "Based on the provided context, Modular RAG differs from Advanced RAG in terms of pipeline structure by offering greater flexibility. Unlike Advanced RAG, which still follows a \"chain-like structure\" similar to Naive RAG, Modular RAG allows for module substitution or reconfiguration, enabling the integration of new modules or adjustment of interaction flow among existing ones. This characteristic makes Modular RAG's pipeline structure more adaptive and modular, as opposed to the more fixed structures of Advanced and Naive RAG. Specifically, Modular RAG's pipeline is not strictly sequential, but rather iterative and adaptive, allowing for enhanced applicability across different tasks.",
+      "verdict": "PASS",
+      "keyword_score": 0.8,
+      "page_coverage_score": 1.0,
+      "keywords_found": [
+        "sequential",
+        "iterative",
+        "adaptive",
+        "module"
+      ],
+      "keywords_missing": [
+        "flexible"
+      ],
+      "pages_hit": [
+        4,
+        5
+      ],
+      "pages_missed": [],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 5
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 4
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 2
+        }
+      ],
+      "latency_sec": 1.23,
+      "notes": "Not limited to sequential; supports iterative and adaptive retrieval."
+    },
+    {
+      "id": 9,
+      "category": "Hallucination Detection",
+      "type": "Precision Trap",
+      "question": "How many tasks and datasets does the paper's evaluation framework cover?",
+      "answer": "Based on the provided context, the information about the number of tasks and datasets covered by the paper's evaluation framework is not mentioned in the specific section labeled as \"Evaluation Framework\" in TEXT CHUNK 3. However, in TEXT CHUNK 1, it is mentioned that the current assessment methods of RAG cover 26 tasks and nearly 50 datasets. \n\nTherefore, the answer to the question about the number of tasks and datasets covered by the evaluation framework, specifically in the context of the paper's evaluation framework, is 'not mentioned' in the relevant section. But, according to TEXT CHUNK 1, RAG assessment methods cover 26 tasks and nearly 50 datasets.",
+      "verdict": "PASS",
+      "keyword_score": 1.0,
+      "page_coverage_score": 0.5,
+      "keywords_found": [
+        "26",
+        "50"
+      ],
+      "keywords_missing": [],
+      "pages_hit": [
+        2
+      ],
+      "pages_missed": [
+        12
+      ],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 2
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 9
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 15
+        }
+      ],
+      "latency_sec": 1.61,
+      "notes": "Exact answer: 26 tasks, nearly 50 datasets."
+    },
+    {
+      "id": 10,
+      "category": "Hallucination Detection",
+      "type": "Precision Trap",
+      "question": "What threshold does FLARE use to decide when to retrieve?",
+      "answer": "Based on the provided context, the specific threshold value used by FLARE to decide when to retrieve is not mentioned. The context mentions that FLARE automates timing retrieval by monitoring the confidence of the generation process and that a certain threshold may trigger the retrieval process, but it does not provide a specific numerical value for this threshold. Therefore, there is no specific value given for the threshold used by FLARE.",
+      "verdict": "PASS",
+      "keyword_score": 0.8,
+      "page_coverage_score": 1.0,
+      "keywords_found": [
+        "threshold",
+        "no specific",
+        "not mentioned",
+        "certain threshold"
+      ],
+      "keywords_missing": [
+        "probability"
+      ],
+      "pages_hit": [
+        11,
+        12
+      ],
+      "pages_missed": [],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 12
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 5
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 11
+        }
+      ],
+      "latency_sec": 1.27,
+      "notes": "No specific number given. Model should NOT invent a value."
+    },
+    {
+      "id": 11,
+      "category": "Hallucination Detection",
+      "type": "Precision Trap",
+      "question": "Which specific embedding leaderboard does the paper reference for evaluating embedding models?",
+      "answer": "The paper references Hugging Face's MTEB leaderboard for evaluating embedding models across 8 tasks, covering 58 datasets. Additionally, it mentions C-MTEB, which focuses on Chinese capability, covering 6 tasks and 35 datasets.",
+      "verdict": "PASS",
+      "keyword_score": 1.0,
+      "page_coverage_score": 1.0,
+      "keywords_found": [
+        "mteb",
+        "hugging face",
+        "8 tasks",
+        "58 datasets"
+      ],
+      "keywords_missing": [],
+      "pages_hit": [
+        9
+      ],
+      "pages_missed": [],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 9
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 9
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 9
+        }
+      ],
+      "latency_sec": 1.44,
+      "notes": "MTEB leaderboard, 8 tasks, 58 datasets. C-MTEB is bonus."
+    },
+    {
+      "id": 12,
+      "category": "Hallucination Detection",
+      "type": "Out-of-scope",
+      "question": "What is the latest RAG benchmark released in 2025?",
+      "answer": "The latest RAG benchmark released in 2025 is not mentioned in the provided context. The context only discusses existing benchmarks such as RGB, RECALL, and CRUD, as well as tools like RAGAS and ARES, but does not provide information about any benchmarks released in 2025. Cannot answer the question as the information is not found in the given context.",
+      "verdict": "PASS",
+      "keyword_score": 0.8,
+      "page_coverage_score": 1.0,
+      "keywords_found": [
+        "not mentioned",
+        "not found",
+        "cannot",
+        "does not"
+      ],
+      "keywords_missing": [
+        "no information"
+      ],
+      "pages_hit": [],
+      "pages_missed": [],
+      "sources": [
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 2
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 14
+        },
+        {
+          "type": "TEXT",
+          "source": "Document.pdf",
+          "page": 14
+        }
+      ],
+      "latency_sec": 1.16,
+      "notes": "Model must abstain. Any specific answer is a hallucination."
+    }
+  ]
+}
