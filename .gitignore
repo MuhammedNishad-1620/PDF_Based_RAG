@@ -1,3 +1,5 @@
 PDF_RAG/
 .env
 __pycache__/
+chroma_db/
+tests/
