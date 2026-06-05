@@ -39,13 +39,13 @@ class ChromaStore:
             doc_id = f"{source}_p{page}_{block_type}"
             if block_type == "text":
                 chunk_idx = doc.metadata.get("chunk_index", 0)
-                doc_id += f"_c{chunk_idx}"
+                doc_id += f"_c{chunk_idx}_{idx}"
             elif block_type == "table":
                 table_idx = doc.metadata.get("table_index", 0)
-                doc_id += f"_t{table_idx}"
+                doc_id += f"_t{table_idx}_{idx}"
             elif block_type == "image":
                 image_xref = doc.metadata.get("image_xref", 0)
-                doc_id += f"_img{image_xref}"
+                doc_id += f"_img{image_xref}_{idx}"
             else:
                 doc_id += f"_{idx}"
                 

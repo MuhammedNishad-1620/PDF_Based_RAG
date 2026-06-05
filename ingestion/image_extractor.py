@@ -1,9 +1,19 @@
 import io
+import os
 import fitz
-import pytesseract
 from PIL import Image
 from pathlib import Path
 from langchain_core.documents import Document
+
+_easyocr_reader = None
+
+def _get_ocr_reader():
+    """Lazily initialize and return the EasyOCR reader."""
+    global _easyocr_reader
+    if _easyocr_reader is None:
+        import easyocr
+        _easyocr_reader = easyocr.Reader(['en'])
+    return _easyocr_reader
 
 def find_nearby_caption(img_bbox, text_blocks):
     """Find the most likely figure caption for an image block."""
@@ -45,7 +55,9 @@ def extract_images_to_documents(pdf_path):
                         # Crop image region and extract text via OCR
                         try:
                             pix = page.get_pixmap(clip=bbox, dpi=150)
-                            ocr_txt = pytesseract.image_to_string(Image.open(io.BytesIO(pix.tobytes("png")))).strip()
+                            reader = _get_ocr_reader()
+                            results = reader.readtext(pix.tobytes("png"))
+                            ocr_txt = " ".join([res[1] for res in results]).strip()
                         except Exception as e:
                             print(f"[OCR ERROR] Page {i+1}, xref {xref}: {e}")
                         # Find matching caption and construct LangChain Document
