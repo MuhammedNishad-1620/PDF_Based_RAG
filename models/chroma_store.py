@@ -4,7 +4,6 @@ import chromadb
 from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
 
-# Ensure the root directory of the project is in python path
 BASE_DIR = Path(__file__).resolve().parent.parent
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
