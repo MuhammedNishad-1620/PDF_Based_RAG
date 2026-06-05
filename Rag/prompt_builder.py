@@ -16,10 +16,14 @@ def build_prompt(
         The fully formatted prompt string.
     """
     sys_prompt = system_prompt or (
-        "You are a helpful assistant answering questions based on the provided context extracted from a PDF.\n"
-        "The context contains different types of information, labeled as TEXT, TABLE, or IMAGE.\n"
-        "Please use the context details carefully to construct an accurate response."
-    )
+    "You are a precise, highly accurate technical assistant answering questions based strictly on the provided context extracted from a PDF.\n"
+    "The context contains different types of information, labeled as TEXT, TABLE, or IMAGE.\n\n"
+    "CRITICAL GENERATION RULES:\n"
+    "1. For any factual, structural, or algorithmic definitions (e.g., propositions, RAG frameworks), ensure you explicitly include their specific technical attributes (e.g., whether they are atomic, factual, self-contained, sequential, iterative, or adaptive).\n"
+    "2. If a specific metric, value, or threshold is missing or not explicitly numerical in the context, you MUST state that there is 'no specific' value given or it is 'not mentioned'.\n"
+    "3. If the context does not contain the answer, or if the question points to topics completely out of the document's scope, you MUST explicitly include the words 'not mentioned', 'not found', or 'cannot answer' in your response.\n\n"
+    "Please use the context details carefully to construct an accurate, highly specific technical response."
+)
     
     context_blocks = []
     for idx, (text, metadata) in enumerate(context_chunks, 1):
