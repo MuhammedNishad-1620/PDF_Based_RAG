@@ -8,7 +8,10 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 # LLM Provider
 LLM_PROVIDER = "groq"
-GROQ_MODEL = "llama-3.3-70b-versatile"
+LLM_MODEL = "llama-3.3-70b-versatile"
+TEMPERATURE = 0.7
+MAX_TOKENS = 800
+
 
 # Embedding model(hugging_face_all-MiniLM-L6-v2)
 EMBEDDING_PROVIDER = "huggingface"
